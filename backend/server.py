@@ -393,11 +393,11 @@ async def get_scrims(current_user: dict = Depends(get_current_user)):
     
     scrims = list(scrims_collection.find(query))
     
-    # Filter based on tier visibility
+    # Filter based on tier visibility and serialize
     visible_scrims = []
     for scrim in scrims:
         if can_see_tier(current_user["tier"], scrim["tier"]):
-            visible_scrims.append(scrim)
+            visible_scrims.append(serialize_doc(scrim))
     
     return visible_scrims
 
