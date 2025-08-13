@@ -445,7 +445,7 @@ async def get_tier_requests(current_user: dict = Depends(get_current_user)):
         raise HTTPException(status_code=403, detail="Admin access required")
     
     requests = list(tier_requests_collection.find({"status": "pending"}))
-    return requests
+    return serialize_doc(requests)
 
 @app.post("/api/admin/tier-requests/{request_id}/approve")
 async def approve_tier_request(request_id: str, current_user: dict = Depends(get_current_user)):
