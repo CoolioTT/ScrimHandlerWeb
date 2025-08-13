@@ -341,7 +341,11 @@ async def get_my_team(current_user: dict = Depends(get_current_user)):
         {"password_hash": 0}
     ))
     
+    # Serialize the documents
+    team = serialize_doc(team)
+    members = serialize_doc(members)
     team["members_details"] = members
+    
     return team
 
 @app.post("/api/scrims/create")
