@@ -8,6 +8,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel, EmailStr
 import pymongo
 from pymongo import MongoClient
+from bson import ObjectId
 import jwt
 from passlib.context import CryptContext
 import logging
